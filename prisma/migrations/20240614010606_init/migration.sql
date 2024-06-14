@@ -1,0 +1,7 @@
+-- CreateTable
+CREATE TABLE "User" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "day" INTEGER NOT NULL,
+    "month" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL
+);
