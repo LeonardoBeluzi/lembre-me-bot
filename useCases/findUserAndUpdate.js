@@ -1,33 +1,31 @@
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
+const { Birthday } = require("../models/birthdayModel");
 
 module.exports = {
   async execute(userId, day, month) {
-    const userBirthday = await prisma.birthday.findFirst({
+    const userBirthday = await Birthday.findOne({
       where: {
         userId,
       },
     });
 
     if (userBirthday) {
-      return await prisma.birthday.update({
-        where: {
-          userId,
-        },
-        data: {
+      return await Birthday.update(
+        {
           day,
           month,
         },
-      });
+        {
+          where: {
+            userId,
+          },
+        }
+      );
     }
 
-    return await prisma.birthday.create({
-      data: {
-        day,
-        month,
-        userId,
-      },
+    return await Birthday.create({
+      day,
+      month,
+      userId,
     });
   },
 };

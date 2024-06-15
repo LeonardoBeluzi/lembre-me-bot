@@ -1,11 +1,10 @@
-const { PrismaClient } = require("@prisma/client");
 const { Collection } = require("discord.js");
 const createCron = require("../functions/createCron");
+const { Birthday } = require("../models/birthdayModel");
 
 module.exports = {
   async execute(client) {
-    const prisma = new PrismaClient();
-    const usersBirthday = await prisma.birthday.findMany();
+    const usersBirthday = await Birthday.findAll();
 
     const cronJobs = new Collection();
 
