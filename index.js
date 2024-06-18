@@ -11,12 +11,19 @@ const cronJobs = require("./useCases/createCronJobs");
 async function main() {
   const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+    presence: {
+      activities: [
+        {
+          name: "counting days",
+          type: ActivityType.Custom,
+        },
+      ],
+    },
   });
 
   client.commands = readCommands();
 
   client.once(Events.ClientReady, (readyClient) => {
-    client.user.setActivity("counting days", { type: ActivityType.Custom });
     console.log("Logged in!");
   });
 
