@@ -38,6 +38,8 @@ module.exports = {
     const month = interaction.options.getInteger("month");
     const user = interaction.options.getUser("user");
 
+    await interaction.deferReply();
+
     const birthday = await findUserAndUpdateUseCase.execute(
       user.id,
       day,
@@ -48,6 +50,6 @@ module.exports = {
 
     const birthDate = formatBirthdayDate(day, month);
 
-    await interaction.reply(`${user}'s birthday was set to ${birthDate}.`);
+    await interaction.editReply(`${user}'s birthday was set to ${birthDate}.`);
   },
 };
