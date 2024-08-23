@@ -9,7 +9,7 @@ module.exports = {
     });
 
     if (userBirthday) {
-      return await Birthday.update(
+      await Birthday.update(
         {
           day,
           month,
@@ -18,8 +18,15 @@ module.exports = {
           where: {
             userId,
           },
+          returning: true,
         }
       );
+
+      return await Birthday.findOne({
+        where: {
+          userId,
+        },
+      });
     }
 
     return await Birthday.create({
