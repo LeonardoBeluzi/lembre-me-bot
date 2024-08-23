@@ -10,6 +10,7 @@ module.exports = {
 
     for (const birthday of usersBirthday) {
       const cron = createCron(birthday, client);
+      console.log(`cron job created for ${client} on ${birthday}`);
       cronJobs.set(cron.identifier, cron.job);
     }
 
