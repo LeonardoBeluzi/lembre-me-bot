@@ -4,7 +4,7 @@ module.exports = (birthday, client) => {
   const identifier = `birthday_${birthday.id}`;
 
   const job = new CronJob(
-    `00 00 00 ${birthday.day} ${birthday.month} *`,
+    `0 1 0 ${birthday.day} ${birthday.month} *`,
     async function () {
       const channel = client.channels.cache.get(process.env.DISCORD_CHANNEL_ID);
       channel.send(
