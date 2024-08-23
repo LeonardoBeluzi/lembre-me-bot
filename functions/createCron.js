@@ -20,7 +20,10 @@ module.exports = (birthday, client) => {
 
   const job = new CronJob(cronExpression, cronFunction);
 
+  console.log(`cron job created for ${birthday.userId}`);
+
   const nextDates = job.nextDates(1);
+
   console.log(
     "The job will run on:",
     nextDates.map((d) => d.toISO())
