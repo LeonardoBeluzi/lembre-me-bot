@@ -3,9 +3,6 @@ FROM node:latest
 RUN mkdir -p /usr/src/bot
 WORKDIR /usr/src/bot
 
-RUN apk add --no-cache tzdata
-ENV TZ America/Sao_Paulo
-
 COPY package.json /usr/src/bot
 RUN npm install
 
