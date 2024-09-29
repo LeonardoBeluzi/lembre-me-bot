@@ -2,7 +2,7 @@ const { CronJob } = require("cron");
 
 module.exports = (birthday, client) => {
   const identifier = `birthday_${birthday.id}`;
-  const cronExpression = `1 0 0 ${birthday.day} ${birthday.month} *`;
+  const cronExpression = `1 0 1 ${birthday.day} ${birthday.month} *`;
 
   function cronFunction() {
     const channel = client.channels.cache.get(process.env.DISCORD_CHANNEL_ID);
